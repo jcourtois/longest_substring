@@ -11,16 +11,15 @@ struct Solution {}
 #[cfg(test)]
 impl Solution {
     pub fn longest_substring(s: String) -> i32 {
-        let mut max: usize = 0;
-        let mut list: LinkedList<char> = LinkedList::new();
-        let mut set: HashSet<char> = HashSet::new();
+        let mut max = 0;
+        let mut set = HashSet::new();
+        let mut list = LinkedList::new();
 
         for c in s.chars() {
             if set.contains(&c) {
                 while let Some(front) = list.pop_front() {
                     if front == c {
                         list.push_back(c);
-                        max = std::cmp::max(max, list.len());
                         break;
                     } else {
                         set.remove(&front);
